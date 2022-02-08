@@ -1,37 +1,24 @@
 @Free_Magento_pages_test
-Feature: pagination & Mouse Hovers on Free Magento pages
+Feature: pagination test for Free Magento pages
 
 
 
 @without_Login
-  Scenario: pagination & Mouse Hovers on Free Magento pages test without log in
-  Given User is on Home Pagei
-  Then click on Free PPts under Free Stuff 
-  Then mouse hover on any of one free ppt and verify the pop-up 
-  Then click on any of page number and verify the listing page for free ppts
-  Then click on any of one ppt under free ppts 
+  Scenario: pagination test for Free Magento pages without log in
+  Given user is on Home Page
+  Then click on Free Slides button on top navigation bar
+  Then click on any of page number and verify the listing page below
+  Then select any of one ppt on the page
   Then verify the navigation on correct ppt page 
-  Then click on Free Business PPTs under Free stuff
-  Then mouse hover on any of one ppt and verify the pop-up
-  Then click on any of page numberi
-  Then click on any of one ppts 
-  Then verify the navigation on cottect ppt page 
- 
-  
   
 @With_login
-Scenario: pagination & Mouse Hovers on Free Magento pages test with log in
+Scenario: Pagination test for Free Magento pages with log in
   Then Click on signin page
-  Then Enter username "nishadhiman0027@gmail.com" and passwordi "Qwerty@1"
-  Then Click on Free Ppts under Free Stuff 
-  Then Mouse Hover on any of one free ppt and verify the pop-up 
-  Then Click on any of page number and verify the listing page for free ppts
+  Then Enter username "qaslidegeeks@gmail.com" and passwordi "Qwerty@1"
+  Then Click on Free Slides button on top navigation bar
+  Then Click on any of page number and verify the listing page 
   Then Click on any of one ppt under free ppts 
   Then Verify the navigation on correct ppt page 
-  Then Click on Free Business PPTs under Free stuff
-  Then Mouse hover on any of one ppt and verify the pop-up
-  Then Click on any of page numberii
-  Then Click on any of one ppts 
-  Then Verify the navigation on cottect ppt pageii 
+  Then User logout from the application 
 
   

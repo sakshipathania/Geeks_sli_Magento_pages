@@ -51,8 +51,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                11,
-                1,
+                73,
+                0,
                 0,
                 0,
                 0
@@ -94,7 +94,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 12) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 73) / 100;
                         return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
                     }
                 }
@@ -107,8 +107,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                0,
-                1
+                10,
+                0
             ],
             backgroundColor: [
                 "#00B000",
@@ -144,7 +144,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 1) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 10) / 100;
                         return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
                     }
                 }
@@ -157,8 +157,8 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                   0,
-                   1
+                   6,
+                   0
                ],
                backgroundColor: [
                 "#00B000",
@@ -191,7 +191,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 1) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 6) / 100;
                         return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
                     }
                 }
@@ -233,7 +233,7 @@ $(document).ready(function() {
           <tr class="info">
             <td>Project Name</td>
                           <td>1</td>
-                        <td>19 Jan 2022, 15:00</td>
+                        <td>07 Feb 2022, 18:42</td>
           </tr>
         </tbody>
       </table>
@@ -323,50 +323,125 @@ $(document).ready(function() {
 
   <tbody>
           <tr>
+        <td class="tagname"><a href="src-test-java-features-Widgets_Pages-feature.html">Emarsys Widgets pages test</a></td>
+        
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+        <td      class="passed"    >3</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3</td>
+        <td class="duration" data-value="18678178100">18s 678ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
         <td class="tagname"><a href="src-test-java-features-SLI_pop-up_Check_with_escape_key-feature.html">SLI POP UP test</a></td>
         
+        <td  class="passed"    >1</td>
         <td >0</td>
-        <td  class="failed"    >1</td>
         <td class="total">1</td>
-        <td      class="passed"    >11</td>
-        <td      class="failed"    >1</td>
+        <td      class="passed"    >12</td>
+        <td >0</td>
         <td >0</td>
         <td >0</td>
         <td >0</td>
         <td class="total">12</td>
-        <td class="duration" data-value="149728993100">2m 29s 728ms</td>
-        <td class="failed">Failed</td>
+        <td class="duration" data-value="6599128400">6s 599ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="src-test-java-features-sli_listing_page-feature.html">SLI POP UP test</a></td>
+        
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+        <td      class="passed"    >18</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">18</td>
+        <td class="duration" data-value="76878905700">1m 16s 878ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="src-test-java-features-New_Additions-feature.html">pagination & Mouse Hovers on New Additions pages</a></td>
+        
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+        <td      class="passed"    >13</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">13</td>
+        <td class="duration" data-value="87844296000">1m 27s 844ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="src-test-java-features-Paid_Manento_pages-feature.html">pagination & Mouse Hovers on paid Magento pages</a></td>
+        
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+        <td      class="passed"    >15</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">15</td>
+        <td class="duration" data-value="81144222600">1m 21s 144ms</td>
+        <td class="passed">Passed</td>
+      </tr>
+          <tr>
+        <td class="tagname"><a href="src-test-java-features-Free_magento_pages-feature.html">pagination test for Free Magento pages</a></td>
+        
+        <td  class="passed"    >2</td>
+        <td >0</td>
+        <td class="total">2</td>
+        <td      class="passed"    >12</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">12</td>
+        <td class="duration" data-value="84623840600">1m 24s 623ms</td>
+        <td class="passed">Passed</td>
       </tr>
       </tbody>
 
   <tfoot class="total">
     <tr>
-      <td>1</td>
-            <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>11</td>
-      <td>1</td>
+      <td>6</td>
+            <td>10</td>
+      <td>0</td>
+      <td>10</td>
+      <td>73</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>12</td>
-      <td class="duration">2m 29s 728ms</td>
+      <td>0</td>
+      <td>73</td>
+      <td class="duration">5m 55s 768ms</td>
       <td></td>
     </tr>
     <tr>
       <td></td>
-            <td>0.00%</td>
-      <td>100.00%</td>
-      <td></td>
-      <td>91.67%</td>
-      <td>8.33%</td>
+            <td>100.00%</td>
       <td>0.00%</td>
-      <td>0.00%</td>
-      <td>0.00%</td>
-      <td></td>
       <td></td>
       <td>100.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td></td>
+      <td>0.00%</td>
     </tr>
   </tfoot>
 </table>

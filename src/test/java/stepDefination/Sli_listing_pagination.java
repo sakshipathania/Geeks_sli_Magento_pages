@@ -15,25 +15,26 @@ import cucumber.api.java.en.Then;
 
 public class Sli_listing_pagination extends BaseClass {
 
-	private WebElement page_number;
+	private WebElement searchField;
 	private int product_size;
 	private String pageNumber;
 	private WebElement select_ppt;
 	private String verify_ppt_page;
+	private WebElement page_number;
 
 	@Given("^User is on Home Page$")
 	public void user_is_on_Home_Page() throws Throwable {
-
 		driver.get(AppURL);
+		log.info("It's opening the website URL");
 		BaseClass.ClearBrowserCache();
+
 	}
 
-	@Then("^Enter keyword \"(.*)\" in search field$")
-	public void enter_keyword_in_search_field(String Text) throws Throwable {
+	@Then("^Enter keyword \"([^\"]*)\" in search field$")
+	public void enter_keyword_in_search_field(String text) throws Throwable {
 		try {
-			WebElement search_field = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
-			search_field.sendKeys(Text);
+			searchField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search-input']")));
+			searchField.sendKeys(text);
 			Thread.sleep(3000);
 		} catch (NoSuchElementException e) {
 
@@ -42,11 +43,11 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^Go to the listing page$")
 	public void go_to_the_listing_page() throws Throwable {
-
 		try {
-			WebElement project_progress = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//a[@data-suggested-term='project progress']//span[@class='highlight'][normalize-space()='progress']")));
-			project_progress.click();
+			WebElement softwareTesting = wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//div[@Class='sli_ac_suggestions']//ul//li[5]")));
+			Thread.sleep(3000);
+			softwareTesting.click();
 			System.out.println();
 		} catch (NoSuchElementException e) {
 
@@ -55,63 +56,53 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^mouse hover on any of one ppts$")
 	public void mouse_hover_on_any_of_one_ppts() throws Throwable {
-
 		try {
+			Thread.sleep(3000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//div[@data-direct-url='https://www.slideteam.net/board-to-track-project-progress-ppt-powerpoint-presentation-portfolio.html']")));
+					"//img[@title='Software Testing Testing Reporting Ppt PowerPoint Presentation Complete Deck']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
-
 		} catch (NoSuchElementException e) {
 
 		}
-
 	}
 
 	@Then("^verify the whether the pop-up is visible$")
 	public void verify_the_whether_the_pop_up_is_visible() throws Throwable {
-		try {
-			Thread.sleep(3000);
-			// to verify the pop-up
-			String display = driver.findElement(By.xpath("//div[@id = 'imgtip216672']")).getCssValue("display");
-			System.out.println("display= " + display);
-			
-			Assert.assertTrue("pop-up is not visible", display.equals("block"));		
-		} catch (NoSuchElementException e) {
+		// to verify the pop-up
+		Thread.sleep(4000);
 
-		}
+		String display = BaseClass.elementToBeClickable(By.xpath("//div[@id = 'imgtip242862']")).getCssValue("display");
 
+		System.out.println("display= " + display);
+
+		Assert.assertTrue("pop-up is not visible", display.equals("block")); // if block - visible if none - not
+																				// visible
 	}
 
 	@Then("^click on any of page number and verify the product below$")
 	public void click_on_any_of_page_number_and_verify_the_product_below() throws Throwable {
-		// click on 3rd page
-		try {
-			page_number = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[3]//div[1]//div[1]//div[3]//ul[1]//li[3]//a[1]")));
-			pageNumber = page_number.getText();
-			page_number.click();
+		Thread.sleep(3000);
+		// click on 7th page number
+		page_number = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//div[@class='product-info sli_generic_container']//ul//li[8]")));
+		pageNumber = page_number.getText();
+		page_number.click();
 
-			List<WebElement> productSize = driver.findElements(
-					By.xpath("//div[@class = 'container listing-container sli_generic_container']//ul//li"));
+		List<WebElement> productSize = driver.findElements(By.xpath("//div[@class='box-row sli_container  ']//a//img"));
 
-			System.out.println("Total product on " + pageNumber + "rd page = " + productSize.size());
+		System.out.println("Total product on " + pageNumber + "th page = " + productSize.size());
 
-			product_size = productSize.size();
-			Assert.assertTrue("No product is displayed", product_size > 0);
-		} catch (NoSuchElementException e) {
-
-		}
-
+		product_size = productSize.size();
+		Assert.assertTrue("No product is displayed", product_size > 0);
 	}
 
 	@Then("^click on any of ppt$")
 	public void click_on_any_of_ppt() throws Throwable {
 		try {
-			Thread.sleep(3000);
-			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//div[@data-direct-url='https://www.slideteam.net/project-tracking-with-assigned-and-deadline-date.html']")));
+			WebElement select_ppt = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[@class = 'box-row sli_container  ']//div[3]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			select_ppt.click();
 		} catch (NoSuchElementException e) {
@@ -121,15 +112,12 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^verify the ppt page$")
 	public void verify_the_ppt_page() throws Throwable {
-
+		// verify the download button
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			verify_ppt_page = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='product-gallery-title']")))
-					.getText();
-			Assert.assertTrue("user is not on corect page",
-					verify_ppt_page.contains("Project Tracking With Assigned And Deadline Date"));
-			Thread.sleep(2000);
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='download_product']"))).getText();
+			Assert.assertTrue("user is not on corect page", verify_ppt_page.contains("Download this Presentation"));
 		} catch (NoSuchElementException e) {
 
 		}
@@ -137,43 +125,37 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^Click on signup page$")
 	public void click_on_signup_page() throws Throwable {
-		try {
-			Thread.sleep(3000);
-			WebElement sign_in = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Sign In']")));
-			sign_in.click();
-		} catch (NoSuchElementException e) {
-
-		}
+		Thread.sleep(3000);
+		WebElement sign_in = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("LOGIN")));
+		sign_in.click();
 	}
 
 	@Then("^Enter username \"([^\"]*)\" and password \"([^\"]*)\"$")
 	public void enter_username_and_password(String username, String password) throws Throwable {
+		Thread.sleep(3000);
 		try {
-			WebElement email = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']")));
+			WebElement email = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='E-mail Address']")));
 			email.sendKeys(username);
 
-			WebElement password_field = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//fieldset[@class='fieldset login']//input[@id='pass']")));
+			WebElement password_field = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Password']")));
 			password_field.sendKeys(password);
+			Thread.sleep(3000);
 
 			WebElement login_btn = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Login']")));
-			login_btn.click();
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='Submit']")));
+			js.executeScript("arguments[0].click();", login_btn);
 			Thread.sleep(2000);
-
 		} catch (NoSuchElementException e) {
-
 		}
-
 	}
 
 	@Then("^Enter keyword \"([^\"]*)\" in search fields$")
-	public void enter_keyword_in_search_fields(String Text1) throws Throwable {
+	public void enter_keyword_in_search_fields(String text1) throws Throwable {
 		try {
-			WebElement search_field = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search']")));
-			search_field.sendKeys(Text1);
+			searchField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='search-input']")));
+			searchField.sendKeys(text1);
 			Thread.sleep(3000);
 		} catch (NoSuchElementException e) {
 
@@ -182,11 +164,10 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^Go to the listing pagei$")
 	public void go_to_the_listing_pagei() throws Throwable {
-
 		try {
-			WebElement change_Management_training_plans = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//a[@data-suggested-term='change management training plan']//span[@class='highlight'][normalize-space()='management']")));
-			change_Management_training_plans.click();
+			WebElement workProgress = wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//div[@Class='sli_ac_suggestions']//ul//li[5]")));
+			workProgress.click();
 			System.out.println();
 		} catch (NoSuchElementException e) {
 
@@ -196,60 +177,54 @@ public class Sli_listing_pagination extends BaseClass {
 	@Then("^mouse hover on any of one pptsi$")
 	public void mouse_hover_on_any_of_one_pptsi() throws Throwable {
 		try {
+			Thread.sleep(3000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//div[@data-direct-url='https://www.slideteam.net/implementing-communication-and-change-management-plan.html']")));
+					"//img[@title='Employee Project Progress Report With Upcoming Work Ppt PowerPoint Presentation File Example Introduction PDF']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
+			Thread.sleep(3000);
 
 		} catch (NoSuchElementException e) {
 
 		}
-
 	}
 
 	@Then("^verify the whether the pop-up is visiblei$")
 	public void verify_the_whether_the_pop_up_is_visiblei() throws Throwable {
-		try {
-			Thread.sleep(2000);
-			// to verify the pop-up
-			String display = driver.findElement(By.xpath("//div[@id = 'imgtip267023']")).getCssValue("display");
-			System.out.println("display= " + display);
-			
-			Assert.assertTrue("pop-up is not visible", display.equals("block"));		
-		} catch (NoSuchElementException e) {
 
-		}
+		// to verify the pop-up
+		String display = driver.findElement(By.xpath("//div[@id = 'imgtip299832']")).getCssValue("display");
 
+		System.out.println("display= " + display);
+
+		Assert.assertTrue("pop-up is not visible", display.equals("block")); // if block - visible if none - not
+																				// visible
 	}
 
 	@Then("^click on Any of page number and verify the listing pagebelowi$")
-	public void click_on_Any_of_page_number_and_verify_the_listing_pagebelow() throws Throwable {
-		// click on 4th page
-		try {
-			page_number = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[3]//div[1]//div[1]//div[3]//ul[1]//li[4]//a[1]")));
-			pageNumber = page_number.getText();
-			page_number.click();
+	public void click_on_Any_of_page_number_and_verify_the_listing_pagebelowi() throws Throwable {
+		Thread.sleep(3000);
+		// click on 7th page number
+		page_number = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//div[@class='product-info sli_generic_container']//ul//li[8]")));
+		pageNumber = page_number.getText();
+		js.executeScript("arguments[0].scrollIntoView();", page_number);
+		js.executeScript("arguments[0].click();", page_number);
 
-			List<WebElement> productSize = driver.findElements(
-					By.xpath("//div[@class = 'container listing-container sli_generic_container']//ul//li"));
+		List<WebElement> productSize = driver.findElements(By.xpath("//div[@class='box-row sli_container  ']//a//img"));
 
-			System.out.println("Total product on " + pageNumber + "th page = " + productSize.size());
+		System.out.println("Total product on " + pageNumber + "th page = " + productSize.size());
 
-			product_size = productSize.size();
-			Assert.assertTrue("No product is displayed", product_size > 0);
-		} catch (NoSuchElementException e) {
-
-		}
+		product_size = productSize.size();
+		Assert.assertTrue("No product is displayed", product_size > 0);
 	}
 
 	@Then("^click on any of ppti$")
 	public void click_on_any_of_ppti() throws Throwable {
 		try {
-			Thread.sleep(3000);
-			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//div[@class = 'container listing-container sli_generic_container']//ul//li[4]")));
+			WebElement select_ppt = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[@class = 'box-row sli_container  ']//div[4]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			select_ppt.click();
 		} catch (NoSuchElementException e) {
@@ -259,36 +234,25 @@ public class Sli_listing_pagination extends BaseClass {
 
 	@Then("^verify the navigation on cottect ppt pageii$")
 	public void verify_the_navigation_on_cottect_ppt_pageii() throws Throwable {
+		// verify the download button
 		try {
-			// verify that whether the download button is visible or not?
-			Thread.sleep(2000);
-			verify_ppt_page = wait
-					.until(ExpectedConditions
-							.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default get-button clicking']")))
+			Thread.sleep(4000);
+			verify_ppt_page = BaseClass.elementToBeClickable(By.xpath(
+					"//a[@class='btn-download pg-button pg-addtocart pg-green-background-btn vwo_subscribe_click']"))
 					.getText();
-			Assert.assertTrue("Download button is not visible", verify_ppt_page.contains("Download this presentation"));
-			Thread.sleep(2000);
+			Assert.assertTrue("user is not on corect page", verify_ppt_page.contains("Download this Presentation"));
 		} catch (NoSuchElementException e) {
 
 		}
 	}
 
 	@Then("^click on Sign out button and verify the pagei$")
-	public void click_on_Sign_out_button_and_verify_the_page() throws Throwable {
-
+	public void click_on_Sign_out_button_and_verify_the_pagei() throws Throwable {
 		try {
-			Thread.sleep(2000);
-			WebElement sign_Out = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Sign Out")));
-			sign_Out.click();
-		} catch (NoSuchElementException e) {
-
-		}
-		try {
-			String verifySignOutMessage = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//h3[@class='base']"))).getText();
-
-			Assert.assertTrue("user is not logout from the application",
-					verifySignOutMessage.contains("YOU ARE NOW LOGGED OUT"));
+			Thread.sleep(4000);
+			WebElement logout = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Logout']")));
+			js.executeScript("arguments[0].click();", logout);
 		} catch (NoSuchElementException e) {
 
 		}
