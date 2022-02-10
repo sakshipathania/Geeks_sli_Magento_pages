@@ -223,10 +223,12 @@ public class Sli_listing_pagination extends BaseClass {
 	@Then("^click on any of ppti$")
 	public void click_on_any_of_ppti() throws Throwable {
 		try {
+			Thread.sleep(2000);
 			WebElement select_ppt = wait.until(ExpectedConditions
 					.elementToBeClickable(By.xpath("//div[@class = 'box-row sli_container  ']//div[4]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
-			select_ppt.click();
+			js.executeScript("arguments[0].click();", select_ppt);
+			//select_ppt.click();
 		} catch (NoSuchElementException e) {
 
 		}
