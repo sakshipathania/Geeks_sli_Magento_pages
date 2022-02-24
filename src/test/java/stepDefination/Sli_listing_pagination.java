@@ -45,7 +45,7 @@ public class Sli_listing_pagination extends BaseClass {
 	public void go_to_the_listing_page() throws Throwable {
 		try {
 			WebElement softwareTesting = wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("//div[@Class='sli_ac_suggestions']//ul//li[6]")));
+					ExpectedConditions.elementToBeClickable(By.xpath("//div[@Class='sli_ac_suggestions']//ul//li[5]")));
 			Thread.sleep(3000);
 			softwareTesting.click();
 			System.out.println();
