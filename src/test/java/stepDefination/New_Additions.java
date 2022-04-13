@@ -41,14 +41,14 @@ public class New_Additions extends BaseClass {
 		try {
 			Thread.sleep(3000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='Scrum Master Job Profile IT Who Can Become A Scrum Master Clipart PDF']")));
+					By.xpath("//img[@title='SPI Methodology Visually Mapping The Software Process Ppt PowerPoint Presentation Gallery Picture PDF']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
 			Thread.sleep(3000);
 
 			// to verify the pop-up
-			String display = driver.findElement(By.xpath("//div[@id = 'imgtip318052']")).getCssValue("display");
+			String display = driver.findElement(By.xpath("//div[@id = 'imgtip333397']")).getCssValue("display");
 
 			System.out.println("display= " + display);
 
@@ -144,14 +144,14 @@ public class New_Additions extends BaseClass {
 		try {
 			Thread.sleep(3000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='Scrum Master Job Profile IT Who Can Become A Scrum Master Clipart PDF']")));
+					By.xpath("//img[@title='SPI Methodology Using Optimized Tools For Continuous Monitoring Ppt PowerPoint Presentation File Layouts PDF']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
 			Thread.sleep(3000);
 
 			// to verify the pop-up
-			String display = driver.findElement(By.xpath("//div[@id = 'imgtip318052']")).getCssValue("display");
+			String display = driver.findElement(By.xpath("//div[@id = 'imgtip333396']")).getCssValue("display");
 
 			System.out.println("display= " + display);
 
