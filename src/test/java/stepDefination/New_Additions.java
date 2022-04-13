@@ -142,7 +142,7 @@ public class New_Additions extends BaseClass {
 	@Then("^Mouse hover on any of one ppt and verify the the popup$")
 	public void mouse_hover_on_any_of_one_ppt_and_verify_the_the_popup() throws Throwable {
 		try {
-			Thread.sleep83000);
+			Thread.sleep(8000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
 					By.xpath("//img[@title='Seven Colored Concentric Circles Stages For Market Sizing Case Template PDF']")));
 			Actions action = new Actions(driver);
