@@ -144,14 +144,14 @@ public class New_Additions extends BaseClass {
 		try {
 			Thread.sleep(8000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='Seven Colored Concentric Circles Stages For Market Sizing Case Template PDF']")));
+					By.xpath("//img[@title='Project Scope Management With Process And Itto Summary Project Scope Management Deliverables Designs PDF']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
 			Thread.sleep(3000);
 
 			// to verify the pop-up
-			String display = driver.findElement(By.xpath("//div[@id = 'imgtip333801']")).getCssValue("display");
+			String display = driver.findElement(By.xpath("//div[@id = 'imgtip334252']")).getCssValue("display");
 
 			System.out.println("display= " + display);
 
