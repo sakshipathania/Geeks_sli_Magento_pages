@@ -59,7 +59,7 @@ public class Sli_listing_pagination extends BaseClass {
 		try {
 			Thread.sleep(3000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//img[@title='Software Architecture Microservices Platform Ppt PowerPoint Presentation Infographic Template Show']")));
+					"//img[@title='Software Testing Testing Reporting Ppt PowerPoint Presentation Complete Deck']")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
@@ -73,7 +73,7 @@ public class Sli_listing_pagination extends BaseClass {
 		// to verify the pop-up
 		Thread.sleep(4000);
 
-		String display = BaseClass.elementToBeClickable(By.xpath("//div[@id = 'imgtip182213']")).getCssValue("display");
+		String display = BaseClass.elementToBeClickable(By.xpath("//div[@id = 'imgtip242862']")).getCssValue("display");
 
 		System.out.println("display= " + display);
 
