@@ -257,7 +257,7 @@ public class Sli_listing_pagination extends BaseClass {
 			js.executeScript("arguments[0].click();", logout);
 		} catch (NoSuchElementException e) {
 
-		}
-	}*/
+		}*/
+	}
 
 }
