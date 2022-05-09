@@ -41,7 +41,7 @@ public class New_Additions extends BaseClass {
 		/*try {
 			Thread.sleep(8000);
 			select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//img[@title='Project Scope Management With Process And Itto Summary Project Scope Management Deliverables Designs PDF']")));
+					By.xpath("//div[3]/div[1]/div[1]/section[2]/div[1]/div[2]/div[1]/div[1]/div[1]/a[1]/div[1]/img[1]")));
 			Actions action = new Actions(driver);
 			js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 			action.moveToElement(select_ppt).perform();
